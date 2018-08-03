@@ -1,4 +1,3 @@
-const mysql = require('mysql')
 const bcrypt = require('bcrypt')
 const moment = require('moment')
 const con = require('../models')
@@ -45,8 +44,8 @@ module.exports = {
 
     if (format_signup) {
       bcrypt.hash(req.body.password, 10, function(err, hash) {
-        sql = 'INSERT INTO Users(user_id, user_password, user_email, user_created, user_type) VALUES (?, ?, ?, ?, ?)'
-        con.query(sql, [req.body.ID,  hash,  req.body.email, moment().format(), 'player'], function (error, result) {
+        sql = 'INSERT INTO Users(user_id, user_password, user_email, user_created, user_type, user_status_writing, user_status_learning, user_status_traveling, user_status_creative, user_status_community, user_status_volunteer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        con.query(sql, [req.body.ID,  hash,  req.body.email, moment().format(), 'player', 0, 0, 0, 0, 0, 0], function (error, result) {
           if (!error) {
             console.log('registered user ' + req.body.ID)
             res.end('success')
@@ -63,7 +62,7 @@ module.exports = {
     }
   },
 
-  login (req, res, next) {
+  login (req, res) {
     sql = 'SELECT * FROM users WHERE user_id = ?'
     con.query(sql, [req.body.ID], function (error, user) {
       if (error) {
@@ -91,7 +90,7 @@ module.exports = {
   },
 
   logout (req, res) {
-    delete req.session.user_ID
+    //delete req.session.user_ID
   }
 
 }

@@ -1,4 +1,5 @@
 const user_controller =  require('./controllers/user_controller')
+const user_status_controller =  require('./controllers/user_status_controller')
 
 module.exports = (app) => {
 
@@ -9,4 +10,5 @@ module.exports = (app) => {
 
   app.post('/login', user_controller.login)
 
+  app.post('/user_status', user_status_controller.getStatus)
 }

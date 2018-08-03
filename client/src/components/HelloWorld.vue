@@ -80,7 +80,6 @@
         </a>
       </li>
     </ul>
-    <button v-on:click='send()'>send</button>
   </div>
 </template>
 

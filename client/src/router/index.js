@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import SignUp from '@/components/SignUp'
 import LogIn from '@/components/LogIn'
+import Home from '@/components/Home'
+import Quest from '@/components/Quest'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
       path: '/login',
       name: 'LogIn',
       component: LogIn
-    }
+    },
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/quest',
+      name: 'Quest',
+      component: Quest
+    },
   ]
 })

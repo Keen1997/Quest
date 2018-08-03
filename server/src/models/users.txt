@@ -4,6 +4,12 @@ CREATE TABLE IF NOT EXISTS `Quest`.`users` (
   `user_email` VARCHAR(45) NOT NULL,
   `user_created` DATETIME NOT NULL,
   `user_type` VARCHAR(10) NOT NULL,
+  `user_status_writing` INT NOT NULL,
+  `user_status_learning` INT NOT NULL,
+  `user_status_traveling` INT NOT NULL,
+  `user_status_creative` INT NOT NULL,
+  `user_status_community` INT NOT NULL,
+  `user_status_volunteer` INT NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
   UNIQUE INDEX `user_email_UNIQUE` (`user_email` ASC))

@@ -12,10 +12,10 @@
       <input type="text" v-model='user.confirmPassword'><span class='not_pass'>{{warn.password_not_match}}</span></span>
       <br><br>
       <span>email </span>
-      <input type="text" v-model='user.email'><span class='qm'><span id='qm_email'>?</span><span class='qm_detail'>for verify / right email format</span></span>
+      <input type="text" v-model='user.email' autocomplete='email'><span class='qm'><span id='qm_email'>?</span><span class='qm_detail'>for verify / right email format</span></span>
       <br>
       <span>confirm email </span>
-      <input type="text" v-model='user.confirmEmail'><span class='not_pass'>{{warn.email_not_match}}</span></span>
+      <input type="text" v-model='user.confirmEmail' autocomplete='email'><span class='not_pass'>{{warn.email_not_match}}</span></span>
       <br><br>
       <input type="submit" value="Submit">
     </form>

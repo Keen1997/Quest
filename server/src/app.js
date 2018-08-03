@@ -14,7 +14,7 @@ const app = express()
 if (process.env.NODE_ENV == 'development') app.use(morgan('hi'))
 app.use(session({ secret: 'secret key', saveUninitialized: true, resave: false, store: new MySQLStore(config.SessionStore)}))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(validator())
 app.use(cors())
 
