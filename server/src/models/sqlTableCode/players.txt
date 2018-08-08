@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS `Quest`.`players` (
+  `player_id` VARCHAR(12) NOT NULL,
+  `player_email` VARCHAR(45) NOT NULL,
+  `player_status_writing` INT NOT NULL,
+  `player_status_learning` INT NOT NULL,
+  `player_status_traveling` INT NOT NULL,
+  `player_status_creative` INT NOT NULL,
+  `player_status_community` INT NOT NULL,
+  `player_status_volunteer` INT NOT NULL,
+  `player_gold` INT NOT NULL,
+  `player_silver` INT NOT NULL,
+  PRIMARY KEY (`player_id`),
+  UNIQUE INDEX `player_id_UNIQUE` (`player_id` ASC),
+  UNIQUE INDEX `player_email_UNIQUE` (`player_email` ASC))
+ENGINE = InnoDB

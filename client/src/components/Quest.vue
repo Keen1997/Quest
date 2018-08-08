@@ -1,5 +1,5 @@
 <template>
-  <div id='Quest'>
+  <div>
     <h3>Quest</h3>
   </div>
 </template>
@@ -11,11 +11,6 @@ export default {
   data() {
     return {
 
-    }
-  },
-  computed: {
-    currentUser() {
-      return this.$store.state.currentUser
     }
   },
 }

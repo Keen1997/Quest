@@ -2,16 +2,16 @@ import api from './api'
 
   export default {
 
-    have_ID (credentials) {
-      return api().post('have_ID', credentials)
-    },
-
-    have_email (credentials) {
-      return api().post('have_email', credentials)
-    },
-
     signup (credentials) {
       return api().post('signup', credentials)
+    },
+
+    haveID (credentials) {
+      return api().post('haveID', credentials)
+    },
+
+    playerHaveEmail (credentials) {
+      return api().post('haveEmail', credentials)
     },
 
     login (credentials) {

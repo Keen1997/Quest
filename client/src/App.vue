@@ -1,41 +1,49 @@
 <template>
   <div id="app">
+
     <div id='header'>
       <nav id='nav'>
 
-        <router-link to="/" v-if='!currentUser'>Home</router-link>
-        <router-link to="/quest" v-if='!currentUser'>Quest</router-link>
-        <router-link to="/" v-if='!currentUser'>Shop</router-link>
-        <router-link to="/login" v-if='!currentUser'>Log In</router-link>
-        <router-link to="/signup" v-if='!currentUser'>Sign Up</router-link>
+        <div v-if='currentUserType == null'>
+          <initialNav/>
+        </div>
 
-        <router-link to="/" v-if='currentUser'>{{currentUser}}</router-link>
-        <router-link to="/quest" v-if='currentUser'>Quest</router-link>
-        <router-link to="/" v-if='currentUser'>Item</router-link>
-        <router-link to="/" v-if='currentUser'>Shop</router-link>
-        <router-link to="/" v-if='currentUser'>community</router-link>
+        <div v-else-if='currentUserType == "player"'>
+          <playerNav/>
+        </div>
 
-        <router-link to="/hello">about</router-link>
-        <router-link to="/" style="padding-right: 0">Setting</router-link>
+        <div v-else-if='currentUserType == "npc"'>
+          <npcNav/>
+        </div>
+
+        <div v-else-if='currentUserType == "gm"'>
+          <gmNav/>
+        </div>
 
       </nav>
     </div>
+
     <router-view/>
+
   </div>
 </template>
 
 <script>
+import initialNav from '@/components/initialNav'
+import playerNav from '@/components/player/playerNav'
+import npcNav from '@/components/npc/npcNav'
+import gmNav from '@/components/gm/gmNav'
+import user_store from '@/store/user_store'
+
 export default {
   name: 'App',
-  data() {
-    return {
-
-    }
+  components: {
+    initialNav, playerNav, npcNav, gmNav
   },
   computed: {
-    currentUser() {
-      return this.$store.state.currentUser
-    }
+    currentUserType() {
+      return user_store.state.currentUser.type
+    },
   }
 
 }
@@ -43,7 +51,6 @@ export default {
 
 <style lang="sass">
 
-  @import './themes/bit/main.sass'
-
+  @import '@/themes/bit/main.sass'
 
 </style>

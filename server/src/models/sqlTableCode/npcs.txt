@@ -1,0 +1,5 @@
+CREATE TABLE `quest`.`npcs` (
+  `npc_id` VARCHAR(12) NOT NULL,
+  `npc_contact` LONGTEXT NULL,
+  PRIMARY KEY (`npc_id`),
+  UNIQUE INDEX `npc_id_UNIQUE` (`npc_id` ASC));

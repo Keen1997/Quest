@@ -1,0 +1,7 @@
+CREATE TABLE `quest`.`users` (
+  `user_id` VARCHAR(12) NOT NULL,
+  `user_password` VARCHAR(255) NOT NULL,
+  `user_type` VARCHAR(45) NOT NULL,
+  `user_created` DATETIME NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `idusers_UNIQUE` (`user_id` ASC));

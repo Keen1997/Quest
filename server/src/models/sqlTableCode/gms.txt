@@ -1,0 +1,4 @@
+CREATE TABLE `quest`.`gms` (
+  `gm_id` VARCHAR(12) NOT NULL,
+  PRIMARY KEY (`gm_id`),
+  UNIQUE INDEX `gm_id_UNIQUE` (`gm_id` ASC));

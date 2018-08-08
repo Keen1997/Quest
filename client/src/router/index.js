@@ -5,6 +5,7 @@ import SignUp from '@/components/SignUp'
 import LogIn from '@/components/LogIn'
 import Home from '@/components/Home'
 import Quest from '@/components/Quest'
+import SpecialCase from '@/components/secret/SpecialCase'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/quest',
       name: 'Quest',
       component: Quest
+    },
+    {
+      path: '/specialcase',
+      name: 'SpecialCase',
+      component: SpecialCase
     },
   ]
 })

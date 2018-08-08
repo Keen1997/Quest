@@ -1,34 +1,39 @@
 <template>
-  <div id='Home'>
+  <div>
 
-    <div v-if='!currentUser'>
+    <div v-if='currentUserType == null'>
       <h3>Hello</h3>
     </div>
 
-    <div v-if='currentUser'>
-      <CurrentUser/>
+    <div v-else-if='currentUserType == "player"'>
+      <CurrentPlayer/>
+    </div>
+
+    <div v-else-if='currentUserType == "npc"'>
+      <npcHome/>
+    </div>
+
+    <div v-else-if='currentUserType == "gm"'>
+      <gmHome/>
     </div>
 
   </div>
 </template>
 
 <script>
-import CurrentUser from '@/components/CurrentUser'
-import user_status_api from '../api/user_status_api'
+import CurrentPlayer from '@/components/player/CurrentPlayer'
+import npcHome from '@/components/npc/npcHome'
+import gmHome from '@/components/gm/gmHome'
+import user_store from '@/store/user_store'
 
 export default {
   name: 'Home',
   components: {
-    CurrentUser
-  },
-  data() {
-    return {
-
-    }
+    CurrentPlayer, npcHome, gmHome
   },
   computed: {
-    currentUser() {
-      return this.$store.state.currentUser
+    currentUserType() {
+      return user_store.state.currentUser.type
     }
   }
 }

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="LogIn">
+  <div>
     <h3>Log In !</h3><br>
     <form @submit.prevent="login">
       <span>ID </span>
@@ -17,8 +17,9 @@
 
 <script>
 import validator from 'validator'
-import user_api from '../api/user_api'
-import store from '../store'
+import user_api from '@/api/user_api'
+import user_store from '@/store/user_store'
+import player_store from '@/store/player_store'
 
 export default {
   name: 'LogIn',
@@ -29,6 +30,9 @@ export default {
         password: ''
       },
     }
+  },
+  created() {
+    if (user_store.state.userType) this.$router.push('/')
   },
   methods: {
     async login() {
@@ -44,8 +48,7 @@ export default {
       )).data
 
       if (data.msg == 'success') {
-        alert('login success !!')
-        this.$store.dispatch('setUser', data.user)
+        user_store.dispatch('login', {ID: data.userID, type:  data.userType})
         this.$router.push('/')
       }
       else document.getElementById('check').innerHTML = data.msg
@@ -56,8 +59,8 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
-  @import '../themes/bit/form.sass'
+  @import '@/themes/bit/form.sass'
 
 </style>
